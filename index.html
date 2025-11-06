@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalender Saya (Ala Google Calendar)</title>
+    <style>
+        /* Gaya Dasar untuk Tampilan Awal (Akan dikembangkan lebih lanjut dengan CSS terpisah) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f3f4;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #dadce0;
+        }
+
+        .calendar-container {
+            display: flex;
+            height: calc(100vh - 60px); /* Asumsi tinggi header 60px */
+        }
+
+        .sidebar {
+            width: 250px;
+            padding: 10px;
+            background-color: #fff;
+            border-right: 1px solid #dadce0;
+            overflow-y: auto;
+        }
+
+        .main-calendar {
+            flex-grow: 1;
+            padding: 10px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            border: 1px solid #dadce0;
+            background-color: #fff;
+            height: 100%;
+        }
+
+        .day-header {
+            text-align: center;
+            padding: 8px 0;
+            font-weight: bold;
+            border-bottom: 1px solid #dadce0;
+        }
+
+        .day-cell {
+            min-height: 120px; /* Tinggi minimal untuk sel hari */
+            padding: 5px;
+            border: 1px solid #dadce0;
+            margin-top: -1px; /* Untuk menghilangkan border ganda */
+            margin-left: -1px;
+            position: relative;
+        }
+
+        .day-number {
+            font-size: 14px;
+            font-weight: bold;
+            color: #3c4043;
+            text-align: right;
+            padding-right: 5px;
+        }
+
+        .event {
+            background-color: #4285f4;
+            color: white;
+            padding: 2px 5px;
+            margin-top: 2px;
+            border-radius: 4px;
+            font-size: 12px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="left-header">
+            <button>Menu</button>
+            <img src="logo-placeholder.png" alt="Logo" style="width:30px; margin-left:10px;">
+            <h1>Kalender</h1>
+        </div>
+        <div class="center-header">
+            <button>&lt;</button>
+            <button>&gt;</button>
+            <span>November 2025</span>
+            <button>Hari Ini</button>
+        </div>
+        <div class="right-header">
+            <input type="text" placeholder="Cari">
+            <select>
+                <option>Bulan</option>
+                <option>Minggu</option>
+                <option>Hari</option>
+            </select>
+            <button>Pengaturan</button>
+        </div>
+    </div>
+
+    <div class="calendar-container">
+        <div class="sidebar">
+            <button style="padding:10px; width:100%; margin-bottom:10px;">+ Buat</button>
+            <h3>Mini Kalender</h3>
+            <p>[Area mini kalender akan diletakkan di sini]</p>
+            <h3>Kalender Saya</h3>
+            <ul>
+                <li><input type="checkbox" checked> Acara</li>
+                <li><input type="checkbox"> Tugas</li>
+            </ul>
+        </div>
+        
+        <div class="main-calendar">
+            <div class="calendar-grid">
+                <div class="day-header">Min</div>
+                <div class="day-header">Sen</div>
+                <div class="day-header">Sel</div>
+                <div class="day-header">Rab</div>
+                <div class="day-header">Kam</div>
+                <div class="day-header">Jum</div>
+                <div class="day-header">Sab</div>
+
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">26</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">27</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">28</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">29</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">30</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number">1</div>
+                    <div class="event" style="background-color:#0b8043;">Rapat Proyek</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number">2</div>
+                </div>
+                
+                <div class="day-cell">
+                    <div class="day-number">3</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number">4</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number">5</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number">6</div>
+                    <div class="event">Presentasi Client</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number">7</div>
+                    <div class="event" style="background-color:#d50000;">Tenggat Tugas</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number">8</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number">9</div>
+                </div>
+
+                <div class="day-cell">
+                    <div class="day-number">30</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">1</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">2</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">3</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">4</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">5</div>
+                </div>
+                <div class="day-cell">
+                    <div class="day-number" style="color:#70757a;">6</div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
