@@ -1,0 +1,41 @@
+/* style.css */
+body {
+    font-family: sans-serif;
+    margin: 20px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 days a week */
+    gap: 5px;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.day-header, .day-cell {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.day-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.current-day {
+    background-color: #d1e7dd; /* Highlight for today */
+    border: 2px solid #28a745;
+}
+
+.has-task {
+    background-color: #ffe5b4; /* Light orange highlight for days with tasks */
+    cursor: pointer;
+}
+
+.task-manager {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+/* You would add more styling for the form and task list here */
